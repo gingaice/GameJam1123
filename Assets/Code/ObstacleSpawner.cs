@@ -13,9 +13,17 @@ public class ObstacleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        asteroid = new BaseObstacle();
         StartSpawn();
     }
 
+
+    private void OnDrawGizmos()
+    {
+        //this is to get how far the ai can see
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +36,11 @@ public class ObstacleSpawner : MonoBehaviour
         if (asteroid != null) 
         {
             //Instantiate(asteroid, );
-            Instantiate(asteroid, Random.insideUnitSphere * radius + transform.position, Random.rotation);
+            for(int i = 0;i < 4;i++)
+            {
+                Instantiate(asteroid, Random.insideUnitSphere * radius + transform.position, Random.rotation);
+            }
+
         }
     }
 }
