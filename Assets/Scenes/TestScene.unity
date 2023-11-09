@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &189243824 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7728934441797565857, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
+  m_PrefabInstance: {fileID: 2121675768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &433533103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,6 +1512,22 @@ PrefabInstance:
     - target: {fileID: 7116380420774880428, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464866218972372174, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
+      propertyPath: Force
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464866218972372174, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 8280495317738588815, guid: 1e2e056556427c740ab4a27270d3989a, type: 3}
+    - target: {fileID: 7464866218972372174, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
+      propertyPath: attackPos
+      value: 
+      objectReference: {fileID: 189243824}
+    - target: {fileID: 7728934441797565857, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.267
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

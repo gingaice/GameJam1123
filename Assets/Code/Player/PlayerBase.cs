@@ -24,6 +24,15 @@ public class PlayerBase : MonoBehaviour
 
     float pressureChangeTimer;
     float pressureChangeCooldown;
+
+    [SerializeField]
+    GameObject bullet;
+    [SerializeField]
+    Transform attackPos;
+    AudioSource gunShot;
+    [SerializeField]
+    float Force;
+    bool allowInvoke=true;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +44,7 @@ public class PlayerBase : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         controller = GetComponent<PlayerController>();
+        gunShot = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -112,4 +122,23 @@ public class PlayerBase : MonoBehaviour
     {
         return pressure;
     }
+    public void Fire()
+    {
+        //finding the bullet direction
+        Vector2 dir = attackPos.forward;
+        //make the bullet
+        GameObject projectile = Instantiate(bullet, attackPos.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody>().AddForce(dir.normalized*Force,ForceMode.Impulse);
+        if(gunShot!=null)
+            gunShot.Play();
+        if(allowInvoke)
+        {
+            Invoke("ResetShot", 2.0f);
+            allowInvoke = false;
+        }
+    }
+    private void ResetShot()
+    {
+        allowInvoke = true;
+    }    
 }
