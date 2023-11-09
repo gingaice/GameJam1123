@@ -121,6 +121,9 @@ MonoBehaviour:
   pressureDecrement: 1
   stationarySprite: {fileID: 21300000, guid: 833e0935f5957c74d800f52c2dbbc763, type: 3}
   movingSprite: {fileID: 21300000, guid: 477cc36181e1c8e419462324a371b18e, type: 3}
+  bullet: {fileID: 0}
+  attackPos: {fileID: 0}
+  Force: 222
 --- !u!58 &5165114854917715667
 CircleCollider2D:
   m_ObjectHideFlags: 0

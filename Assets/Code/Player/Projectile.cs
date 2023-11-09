@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.collider!=null) 
         {
-            DestroyBullet();
+           //DestroyBullet();
         }
         else
         {
