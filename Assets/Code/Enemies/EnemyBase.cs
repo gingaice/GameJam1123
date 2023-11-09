@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IDamage
 {
     [SerializeField]
     public int maxHealth;
@@ -50,7 +50,10 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if(health <= 0)
+       {
+            Destroy(gameObject);
+       }
     }
 
     private void FixedUpdate()
@@ -59,6 +62,11 @@ public class EnemyBase : MonoBehaviour
         {
             Seek(player);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
     private void Seek(GameObject target)
     {

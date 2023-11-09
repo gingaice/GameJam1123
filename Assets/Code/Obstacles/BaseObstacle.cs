@@ -61,18 +61,18 @@ public class BaseObstacle : MonoBehaviour
         }
     }
 
-    private void MoveObstacle()
+    public void MoveObstacle()
     {
         Vector3 moveDirection = player.position - transform.position;
 
         rb.AddForce((moveDirection.normalized * moveSpeed), ForceMode2D.Force);
         isActive = true;
     }
-    private void RotateObstacle()
+    public void RotateObstacle()
     {
         rb.MoveRotation(rb.rotation + rotationSpeed * Time.fixedDeltaTime);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         Int32 layer = LayerMask.NameToLayer("Border");
 
