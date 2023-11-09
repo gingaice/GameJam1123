@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IDamage
 {
     [SerializeField]
     public int maxHealth;
@@ -17,7 +17,7 @@ public class EnemyBase : MonoBehaviour
     public int drag;
 
     private int health;
-    private int attack;
+    protected int attack;
     private int moveSpeed;
 
     private GameObject player;
@@ -50,7 +50,10 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if(health <= 0)
+       {
+            Destroy(gameObject);
+       }
     }
 
     private void FixedUpdate()
@@ -59,6 +62,11 @@ public class EnemyBase : MonoBehaviour
         {
             Seek(player);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
     private void Seek(GameObject target)
     {
@@ -70,7 +78,7 @@ public class EnemyBase : MonoBehaviour
         rb.rotation = angle;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.GetComponent<PlayerController>() == true)
         {

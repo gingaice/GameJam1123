@@ -81,6 +81,10 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         mouseDirection = camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        if(Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            GetComponent<PlayerBase>().Fire(); 
+        }
     }
 
     private void SpeedCap()
