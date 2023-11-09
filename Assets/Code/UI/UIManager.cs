@@ -10,13 +10,13 @@ public class UIManager : MonoBehaviour
     private Image pressureOrbFill;
 
     [SerializeField]
-    public Color lowPressureColour;
-    [SerializeField]
-    public Color lowMediumPressureColour;
+    public Color highPressureColour;
     [SerializeField]
     public Color highMediumPressureColour;
     [SerializeField]
-    public Color highPressureColour;
+    public Color lowMediumPressureColour;
+    [SerializeField]
+    public Color lowPressureColour;
 
     private PlayerBase player;
 
@@ -38,21 +38,21 @@ public class UIManager : MonoBehaviour
     {
         float pressure = player.GetPressure();
 
-        if(pressure < 25f)
+        if(pressure > 75f)
         {
-            pressureOrb.color = lowPressureColour;
+            pressureOrb.color = highPressureColour;
         }
-        else if(pressure < 50.0f)
-        {
-            pressureOrb.color = lowMediumPressureColour;
-        }
-        else if(pressure < 75.0f)
+        else if(pressure > 50.0f)
         {
             pressureOrb.color = highMediumPressureColour;
         }
+        else if(pressure > 25.0f)
+        {
+            pressureOrb.color = lowMediumPressureColour;
+        }
         else
         {
-            pressureOrb.color = highPressureColour;
+            pressureOrb.color = lowPressureColour;
         }
 
         pressureOrbFill.fillAmount = pressure / 100;
