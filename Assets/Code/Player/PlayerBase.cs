@@ -126,7 +126,7 @@ public class PlayerBase : MonoBehaviour
     {
     
         GameObject projectile = Instantiate(bullet, attackPos.position, attackPos.rotation);
-        projectile.GetComponent<Rigidbody2D>().velocity=attackPos.position*Force;
+        projectile.GetComponent<Rigidbody2D>().velocity=attackPos.up*Force;
         if(gunShot!=null)
             gunShot.Play();
         if(allowInvoke)
