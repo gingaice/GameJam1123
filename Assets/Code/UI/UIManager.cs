@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour
     
     [SerializeField]
     public TMP_Text TimerTxt;
+    [SerializeField]
+    private TMP_Text timerTextXtra;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,7 @@ public class UIManager : MonoBehaviour
 
         pauseResume.gameObject.SetActive(false);
         pauseMainMenu.gameObject.SetActive(false);
+        TimerTxt.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -88,6 +92,18 @@ public class UIManager : MonoBehaviour
         }
 
         pressureOrbFill.fillAmount = pressure / 100;
+
+        if(pressure <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void Death()
+    {
+        Time.timeScale = 0;
+        timerTextXtra.gameObject.SetActive(true);
+        TimerTxt.gameObject.SetActive(true);
     }
 
     public void SetScore(int s)
