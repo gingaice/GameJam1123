@@ -20,18 +20,41 @@ public class UIManager : MonoBehaviour
 
     private PlayerBase player;
 
+    [SerializeField]
+    public Button pauseResume;
+
+    [SerializeField]
+    public Button pauseMainMenu;
+
+
     // Start is called before the first frame update
     void Start()
     {
         pressureOrbFill = pressureOrb.gameObject.transform.Find("Orb Fill").gameObject.GetComponent<Image>();
 
         player = GameObject.Find("Player").GetComponent<PlayerBase>();
+
+        pauseResume.gameObject.SetActive(false);
+        pauseMainMenu.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdatePressureOrb();
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Time.timeScale = 0.0f;
+            pauseResume.gameObject.SetActive(true);
+            pauseMainMenu.gameObject.SetActive(true);
+        }
+
+        if (Time.timeScale == 1.0f)
+        {
+            pauseResume.gameObject.SetActive(false);
+            pauseMainMenu.gameObject.SetActive(false);
+        }
     }
 
     private void UpdatePressureOrb()
