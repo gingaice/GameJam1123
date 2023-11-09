@@ -108,4 +108,8 @@ public class PlayerBase : MonoBehaviour
     {
         durability += amount;
     }
+    public float GetPressure()
+    {
+        return pressure;
+    }
 }
