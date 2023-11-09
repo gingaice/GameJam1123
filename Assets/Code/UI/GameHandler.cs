@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class GameHandler : MonoBehaviour
@@ -21,5 +22,18 @@ public class GameHandler : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
+        Debug.Log(score);
+        Scoring();
+        _Timing();
+    }
+
+    public void Scoring()
+    {
+        GetComponent<UIManager>().SetScore(score);
+    }
+    
+    public void _Timing()
+    {
+        GetComponent<UIManager>().TimerTxt.text = gameTime.ToString();
     }
 }
