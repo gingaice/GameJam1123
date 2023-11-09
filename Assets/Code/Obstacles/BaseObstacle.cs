@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +35,7 @@ public class BaseObstacle : MonoBehaviour
     {
         transform.position = spawnPosition;
 
-        float scale = Random.Range(minSize, maxSize);
+        float scale = UnityEngine.Random.Range(minSize, maxSize);
         transform.localScale = new Vector3(scale, scale, scale);
 
         isActive = false;
@@ -73,9 +74,15 @@ public class BaseObstacle : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Int32 layer = LayerMask.NameToLayer("Border");
+
         if (collision.gameObject.GetComponent<PlayerController>() == true)
         {
             collision.gameObject.GetComponent<PlayerBase>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.layer == layer)
+        {
             Destroy(gameObject);
         }
     }
