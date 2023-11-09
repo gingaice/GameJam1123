@@ -16,18 +16,18 @@ public class EnemyBase : MonoBehaviour, IDamage
     [SerializeField]
     public int drag;
 
-    private int health;
+    protected int health;
     protected int attack;
-    private int moveSpeed;
+    protected int moveSpeed;
 
-    private GameObject player;
-    private Rigidbody2D rb;
+    protected GameObject player;
+    protected Rigidbody2D rb;
 
     private EnemySpawner enemySpawner;
 
     private bool isSpawned;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
@@ -48,7 +48,7 @@ public class EnemyBase : MonoBehaviour, IDamage
         isSpawned = true;
     }
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
        if(health <= 0)
        {

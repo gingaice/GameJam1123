@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,7 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] 
     GameObject bullet;
 
-    private int damage;
+    protected int damage;
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,9 @@ public class Projectile : MonoBehaviour
         damage = dmg;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("NotBoss");
         if (collision.gameObject != null)
         {
             if (collision.gameObject.GetComponent<EnemyBase>())
@@ -34,7 +36,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void DestroyBullet()
+    protected void DestroyBullet()
     {
         Destroy(gameObject);
     }
