@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] 
     GameObject bullet;
 
+    private int damage;
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -15,15 +16,21 @@ public class Projectile : MonoBehaviour
         rb.gravityScale = 0;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Init(int dmg)
     {
-        if (collision.collider!=null) 
+        damage = dmg;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject != null)
         {
-           //DestroyBullet();
-        }
-        else
-        {
-            Debug.Log("dlsf");
+            if (collision.gameObject.GetComponent<EnemyBase>())
+            {
+                collision.gameObject.GetComponent<EnemyBase>().TakeDamage(damage);
+            }
+
+            DestroyBullet();
         }
     }
 
