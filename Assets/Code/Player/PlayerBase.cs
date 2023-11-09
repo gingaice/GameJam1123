@@ -31,7 +31,8 @@ public class PlayerBase : MonoBehaviour
     Transform attackPos;
     AudioSource gunShot;
     [SerializeField]
-    float Force=5;
+    public float bulletForce;
+
     bool allowInvoke=true;
     // Start is called before the first frame update
     void Start()
@@ -124,9 +125,10 @@ public class PlayerBase : MonoBehaviour
     }
     public void Fire()
     {
-    
-        GameObject projectile = Instantiate(bullet, attackPos.position, attackPos.rotation);
-        projectile.GetComponent<Rigidbody2D>().velocity=attackPos.up*Force;
+        Vector2 dir = transform.up;
+
+        GameObject projectile = Instantiate(bullet, transform.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().AddForce(dir.normalized * bulletForce, ForceMode2D.Impulse);
         if(gunShot!=null)
             gunShot.Play();
         if(allowInvoke)
