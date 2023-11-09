@@ -11,6 +11,14 @@ public class PlayerBase : MonoBehaviour
     [SerializeField]
     public float pressureDecrement;
 
+    [SerializeField]
+    public Sprite stationarySprite;
+    [SerializeField]
+    public Sprite movingSprite;
+
+    PlayerController controller;
+    SpriteRenderer spriteRenderer;
+
     private int durability;
     private float pressure;
 
@@ -24,6 +32,9 @@ public class PlayerBase : MonoBehaviour
 
         pressureChangeTimer = 0;
         pressureChangeCooldown = 1;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        controller = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -31,7 +42,16 @@ public class PlayerBase : MonoBehaviour
     {
         pressureChangeTimer += Time.deltaTime;
 
-        if(durability < 100)
+        if(controller.GetIsMoving() == true)
+        {
+            spriteRenderer.sprite = movingSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = stationarySprite;
+        }
+
+        if (durability < 100)
         {
             IncreasePressure();
         }

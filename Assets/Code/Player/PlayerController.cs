@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    Camera camera;
+
     [SerializeField]
     public int baseSpeed;
     [SerializeField]
@@ -13,14 +15,20 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     private Vector2 moveDirection;
+    private Vector2 mouseDirection;
 
     private int moveSpeed;
+
     float horizontalInput;
     float verticalInput;
+
+    bool isMoving;
 
     // Start is called before the first frame update
     void Start()
     {
+        camera = Camera.main;
+
         rb = GetComponent<Rigidbody2D>();
         rb.drag = drag;
         rb.gravityScale = 0f;
@@ -32,14 +40,32 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(horizontalInput == 0f && verticalInput == 0f)
+        {
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
+
         Inputs();
     }
 
     void FixedUpdate()
     {
         MoveCharacter();
+        RotateCharacter();
     }
 
+    private void RotateCharacter()
+    {
+        float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg - 90f;
+
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        orientation.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+    }
     private void MoveCharacter()
     {
         moveDirection = (orientation.up * verticalInput) + (orientation.right * horizontalInput);
@@ -53,6 +79,8 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        mouseDirection = camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
     }
 
     private void SpeedCap()
@@ -65,5 +93,10 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = new Vector2(cappedVelocity.x, rb.velocity.y);
         }
+    }
+
+    public bool GetIsMoving()
+    {
+        return isMoving;
     }
 }
