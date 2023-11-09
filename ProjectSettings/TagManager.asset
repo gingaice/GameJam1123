@@ -15,7 +15,7 @@ TagManager:
   - Player
   - Obstacles
   - Enemy
-  - 
+  - Areas
   - 
   - 
   - 
@@ -41,6 +41,15 @@ TagManager:
   - name: Background
     uniqueID: 2374583693
     locked: 0
+  - name: Areas
+    uniqueID: 4100903827
+    locked: 0
+  - name: Obstacles
+    uniqueID: 1228847893
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1669745313
     locked: 0
