@@ -748,6 +748,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a5321c6422d86e43b9922ed56188578, type: 3}
+--- !u!114 &1171901292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2804402751326645274, guid: 3a5321c6422d86e43b9922ed56188578, type: 3}
+  m_PrefabInstance: {fileID: 1110102134}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1237017737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1028,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1346910766 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8930570794965753800, guid: 3a5321c6422d86e43b9922ed56188578, type: 3}
+  m_PrefabInstance: {fileID: 1110102134}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1528726242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,6 +1197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressureOrb: {fileID: 752548508}
+  durabilityCapsule: {fileID: 1171901292}
+  durabilityValue: {fileID: 1346910766}
   highPressureColour: {r: 0, g: 1, b: 0.12756586, a: 0.39215687}
   highMediumPressureColour: {r: 1, g: 1, b: 0, a: 0.39215687}
   lowMediumPressureColour: {r: 1, g: 0.5329269, b: 0, a: 0.39215687}

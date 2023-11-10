@@ -199,4 +199,9 @@ public class PlayerBase : MonoBehaviour, IDamage
     {
         canFire = true;
     }    
+
+    public int GetDurability()
+    {
+        return durability;
+    }
 }

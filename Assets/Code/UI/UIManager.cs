@@ -11,6 +11,13 @@ public class UIManager : MonoBehaviour
     private Image pressureOrbFill;
 
     [SerializeField]
+    public Image durabilityCapsule;
+    private Image durabilityCapsuleFill;
+
+    [SerializeField]
+    public TextMeshProUGUI durabilityValue;
+
+    [SerializeField]
     public Color highPressureColour;
     [SerializeField]
     public Color highMediumPressureColour;
@@ -41,6 +48,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         pressureOrbFill = pressureOrb.gameObject.transform.Find("Orb Fill").gameObject.GetComponent<Image>();
+        durabilityCapsuleFill = durabilityCapsule.gameObject.transform.Find("Capsule Fill").gameObject.GetComponent<Image>();
 
         player = GameObject.Find("Player").GetComponent<PlayerBase>();
 
@@ -53,6 +61,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdatePressureOrb();
+        UpdateDurabilityCapsule();
 
         scoreTxt.text = score.ToString();
 
@@ -99,6 +108,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void UpdateDurabilityCapsule()
+    {
+        durabilityCapsuleFill.fillAmount = (float)player.GetDurability() / 100;
+
+        durabilityValue.text = player.GetDurability().ToString();
+    }
     public void Death()
     {
         Time.timeScale = 0;
