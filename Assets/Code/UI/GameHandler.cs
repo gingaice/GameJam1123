@@ -8,7 +8,8 @@ public enum currentTime
     one,
     two,
     three,
-    four
+    four,
+    five
 }
 
 public class GameHandler : MonoBehaviour
@@ -32,26 +33,9 @@ public class GameHandler : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
-        Debug.Log(score);
         Scoring();
         _Timing();
         changeSpawnTime();
-
-        switch(EcurrentTime)
-        {
-            case currentTime.one:
-                Sb.spawnCooldown = 4;
-                break; 
-            case currentTime.two:
-                Sb.spawnCooldown = 3;
-                break; 
-            case currentTime.three:
-                Sb.spawnCooldown = 2;
-                break; 
-            case currentTime.four:
-                Sb.spawnCooldown = 1;
-                break;
-        }
     }
 
     public void Scoring()
@@ -66,21 +50,40 @@ public class GameHandler : MonoBehaviour
 
     private void changeSpawnTime()
     {
-        if (gameTime > 60)
+        switch (EcurrentTime)
         {
-            EcurrentTime = currentTime.one;
+            case currentTime.one:
+                Sb.spawnCooldown = 5;
+                break;
+            case currentTime.two:
+                Sb.spawnCooldown = 4;
+                break;
+            case currentTime.three:
+                Sb.spawnCooldown = 3;
+                break;
+            case currentTime.four:
+                Sb.spawnCooldown = 2;
+                break;
+            case currentTime.five:
+                Sb.spawnCooldown = 1;
+                break;
         }
-        else if (gameTime > 120)
+
+        if (gameTime > 6.0f) // i dont know why the fuck this aint running will fix tmr
         {
             EcurrentTime = currentTime.two;
         }
-        else if (gameTime > 180)
+        else if (gameTime > 12.0f)
         {
             EcurrentTime = currentTime.three;
         }
-        else if (gameTime > 240)
+        else if (gameTime > 18f)
         {
             EcurrentTime = currentTime.four;
+        }
+        else if (gameTime > 24f)
+        {
+            EcurrentTime = currentTime.five;
         }
     }
 }
