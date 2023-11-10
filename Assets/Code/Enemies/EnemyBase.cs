@@ -17,6 +17,8 @@ public class EnemyBase : MonoBehaviour, IDamage
     [SerializeField]
     public int drag;
 
+    [SerializeField]
+    public AudioClip deathNoise;
 
     [SerializeField]
     public int Value;
@@ -97,6 +99,7 @@ public class EnemyBase : MonoBehaviour, IDamage
             gameHandler.AddKill();
         }
 
+        GetComponent<AudioSource>().PlayOneShot(deathNoise);
         Destroy(gameObject);
     }
     protected void OnCollisionEnter2D(Collision2D collision)

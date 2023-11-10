@@ -51,6 +51,10 @@ public class MiniBoss : EnemyBase
             projectile.GetComponent<Projectile>().Init(attack);
             projectile.GetComponent<Rigidbody2D>().AddForce(dir.normalized * bulletForce, ForceMode2D.Impulse);
 
+            if(GetComponent<AudioSource>() != null)
+            {
+                GetComponent<AudioSource>().Play();
+            }
 
             Invoke("ResetShot", shotCooldown);
             canFire = false;

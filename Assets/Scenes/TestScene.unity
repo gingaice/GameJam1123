@@ -1794,6 +1794,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 22365139084122871, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
+      propertyPath: m_Volume
+      value: 0.459
+      objectReference: {fileID: 0}
+    - target: {fileID: 22365139084122871, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 75bb1f37418505649a724a18ed7535fd, type: 3}
     - target: {fileID: 900446293533341076, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1869,6 +1877,10 @@ PrefabInstance:
     - target: {fileID: 7464866218972372174, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
       propertyPath: bulletForce
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464866218972372174, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
+      propertyPath: shotCooldown
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7728934441797565857, guid: 866c1c85e4f72e54a84d7af8c6d712ba, type: 3}
       propertyPath: m_LocalPosition.y
