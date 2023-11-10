@@ -4,73 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BaseObstacle : MonoBehaviour
+public class BaseObstacle : BaseObject
 {
     [SerializeField]
-    public float moveSpeed;
-    [SerializeField]
-    public float rotationSpeed;
-    [SerializeField]
-    public int damage;
+    public int damageMulti;
 
-    [SerializeField]
-    public float minSize;
-    [SerializeField]
-    public float maxSize;
+    private int damage;
 
-    private Transform player;
-    private Rigidbody2D rb;
-
-    private bool isSpawned, isActive;
-    // Start is called before the first frame update
-    void Start()
+    public new void Init(Vector2 spawnPosition)
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
+        base.Init(spawnPosition);
 
-        player = GameObject.Find("Player").transform;
-    }
-
-    public void Init(Vector2 spawnPosition)
-    {
-        transform.position = spawnPosition;
-
-        float scale = UnityEngine.Random.Range(minSize, maxSize);
-        transform.localScale = new Vector3(scale, scale, scale);
-
-        isActive = false;
-        isSpawned = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void FixedUpdate()
-    {
-        if(isSpawned == true)
-        {
-            if(isActive == false)
-            {
-                MoveObstacle();
-            }
-
-            RotateObstacle();
-        }
-    }
-
-    public void MoveObstacle()
-    {
-        Vector3 moveDirection = player.position - transform.position;
-
-        rb.AddForce((moveDirection.normalized * moveSpeed), ForceMode2D.Force);
-        isActive = true;
-    }
-    public void RotateObstacle()
-    {
-        rb.MoveRotation(rb.rotation + rotationSpeed * Time.fixedDeltaTime);
+        damage = (int)MathF.Round(scale * damageMulti); 
     }
     protected void OnCollisionEnter2D(Collision2D collision)
     {

@@ -139,10 +139,20 @@ public class PlayerBase : MonoBehaviour, IDamage
     public void TakeDamage(int damage)
     {
         durability -= damage;
+
+        if(durability < 0)
+        {
+            durability = 0;
+        }
     }
     public void Repair(int amount)
     {
         durability += amount;
+
+        if(durability > 100)
+        {
+            durability = 100;
+        }
     }
     public float GetPressure()
     {
