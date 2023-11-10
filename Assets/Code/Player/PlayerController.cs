@@ -1,6 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+
+public enum damageDirections
+{
+    LEFT,
+    RIGHT
+}
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,25 +30,33 @@ public class PlayerController : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+    [SerializeField]
+    public float damageForce;
+
+    List<damageDirections> damagedAreas;
     bool isMoving;
+    bool isBroken;
 
     // Start is called before the first frame update
     void Start()
     {
         camera = Camera.main;
 
+        damagedAreas = new List<damageDirections>();
+
         rb = GetComponent<Rigidbody2D>();
         rb.drag = drag;
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
 
+        isBroken = false;
         moveSpeed = baseSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameHandler.instance.GetIsPaused() == false)
+        if (GameHandler.instance.GetIsPaused() == false)
         {
             if (horizontalInput == 0f && verticalInput == 0f)
             {
@@ -57,8 +73,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        MoveCharacter();
+        if(isBroken == false)
+        {
+            MoveCharacter();
+        }
+
         RotateCharacter();
+        ApplyDamagedForces();
     }
 
     private void RotateCharacter()
@@ -85,9 +106,9 @@ public class PlayerController : MonoBehaviour
 
         mouseDirection = camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
-        if(Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            GetComponent<PlayerBase>().Fire(); 
+            GetComponent<PlayerBase>().Fire();
         }
     }
 
@@ -110,11 +131,49 @@ public class PlayerController : MonoBehaviour
 
     public void AdjustMoveSpeed(int speed)
     {
-        moveSpeed += speed;  
+        moveSpeed += speed;
     }
 
     public void ResetMoveSpeed()
     {
         moveSpeed = baseSpeed;
+    }
+
+    public void AddDamagedArea(damageDirections area)
+    {
+        damagedAreas.Add(area);
+    }
+
+    public void RemoveDamagedArea()
+    {
+        if(damagedAreas.Count > 0)
+        {
+            damagedAreas.RemoveAt(damagedAreas.Count - 1);
+        }
+    }
+
+    private void ApplyDamagedForces()
+    {
+        if (damagedAreas.Count != 0)
+        {
+            for (int i = 0; i < damagedAreas.Count; i++)
+            {
+                switch (damagedAreas[i])
+                {
+                    case (damageDirections.LEFT):
+                        rb.AddForce((Vector2.right * damageForce), ForceMode2D.Force);
+                        break;
+
+                    case (damageDirections.RIGHT):
+                        rb.AddForce((Vector2.left * damageForce), ForceMode2D.Force);
+                        break;
+                }
+            }
+        }
+    }
+
+    public void SetIsBroken(bool check)
+    {
+        isBroken = check;
     }
 }

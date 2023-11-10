@@ -502,7 +502,7 @@ MonoBehaviour:
   baseSpawnRates: 64000000
   spawnCooldown: 2
   miniBoss: {fileID: 3809556972650883390, guid: cc048885c3dbd4146bd9419279c0c9a8, type: 3}
-  miniBossCheckpointIncrement: 20
+  miniBossCheckpointIncrement: 15
 --- !u!4 &610139275
 Transform:
   m_ObjectHideFlags: 0
@@ -1239,6 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTime: 0
   score: 0
+  Sb: {fileID: 788032300}
 --- !u!1 &1604848769
 GameObject:
   m_ObjectHideFlags: 0

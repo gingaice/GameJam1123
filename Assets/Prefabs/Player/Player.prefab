@@ -107,6 +107,7 @@ MonoBehaviour:
   baseSpeed: 20
   drag: 2
   orientation: {fileID: 7728934441797565857}
+  damageForce: 2
 --- !u!114 &7464866218972372174
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -101,8 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   baseAttack: 5
-  baseSpeed: 15
+  baseSpeed: 17
   drag: 2
+  Value: 1000
 --- !u!61 &2328937450436661315
 BoxCollider2D:
   m_ObjectHideFlags: 0

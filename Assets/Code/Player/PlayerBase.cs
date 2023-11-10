@@ -99,6 +99,15 @@ public class PlayerBase : MonoBehaviour, IDamage
                 IncreasePressure();
             }
         }
+
+        if(durability == 0)
+        {
+            controller.SetIsBroken(true);
+        }
+        else
+        {
+            controller.SetIsBroken(false);
+        }
     }
 
     private void IncreasePressure()
@@ -149,6 +158,7 @@ public class PlayerBase : MonoBehaviour, IDamage
     }
     public void Repair(int amount)
     {
+        controller.RemoveDamagedArea();
         durability += amount;
 
         if(durability > 100)

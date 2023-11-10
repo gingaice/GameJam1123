@@ -25,7 +25,7 @@ public class GameHandler : MonoBehaviour
     private int kills;
 
     private currentTime EcurrentTime;
-    private SpawnerBase Sb;
+    public SpawnerBase Sb;
 
     private bool isPaused;
     // Start is called before the first frame update
@@ -33,7 +33,6 @@ public class GameHandler : MonoBehaviour
     {
         if(instance == null)
         {
-            Sb = GameObject.Find("ObstacleSpawner").GetComponent<SpawnerBase>();
             gameTime = 0;
             kills = 0;
             isPaused = false;
@@ -82,32 +81,35 @@ public class GameHandler : MonoBehaviour
 
     public void _Timing()
     {
-        gameTime = (float)System.Math.Round(gameTime, 2);
-        GetComponent<UIManager>().TimerTxt.text = gameTime.ToString();
+        GetComponent<UIManager>().TimerTxt.text = ((float)System.Math.Round(gameTime, 2)).ToString();
     }
 
+    public float GetRoundedGameTimer()
+    {
+        return (float)System.Math.Round(gameTime, 2);
+    }
     private void changeSpawnTime()
     {
         switch (EcurrentTime)
         {
             case currentTime.one:
-                Sb.spawnCooldown = 60;
+                Sb.spawnCooldown = 35;
                 break;
             case currentTime.two:
-                Sb.spawnCooldown = 50;
-                break;
-            case currentTime.three:
-                Sb.spawnCooldown = 40;
-                break;
-            case currentTime.four:
                 Sb.spawnCooldown = 30;
                 break;
+            case currentTime.three:
+                Sb.spawnCooldown = 25;
+                break;
+            case currentTime.four:
+                Sb.spawnCooldown = 15;
+                break;
             case currentTime.five:
-                Sb.spawnCooldown = 20;
+                Sb.spawnCooldown = 10;
                 break;
         }
 
-        if (gameTime < 30.0f) // i dont know why the fuck this aint running will fix tmr
+        if (gameTime < 30.0f) // i dont know why the fuck this aint running will fix tmr (Adam 10/11/23 2:13am)
         {
             EcurrentTime = currentTime.one;
         }

@@ -17,6 +17,10 @@ public class EnemyBase : MonoBehaviour, IDamage
     [SerializeField]
     public int drag;
 
+
+    [SerializeField]
+    public int Value;
+
     protected int health;
     protected int attack;
     protected int moveSpeed;
@@ -29,7 +33,7 @@ public class EnemyBase : MonoBehaviour, IDamage
     private bool isSpawned;
 
     private GameHandler gameHandler;
-    private int Value = 100;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -99,6 +103,17 @@ public class EnemyBase : MonoBehaviour, IDamage
     {
         if(collision.gameObject.GetComponent<PlayerController>() == true)
         {
+            Vector2 point = collision.GetContact(0).point;
+
+            if(point.x < collision.transform.position.x)
+            {
+                collision.gameObject.GetComponent<PlayerController>().AddDamagedArea(damageDirections.LEFT);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<PlayerController>().AddDamagedArea(damageDirections.RIGHT);
+            }
+
             collision.gameObject.GetComponent<PlayerBase>().TakeDamage(attack);
             OnDeath(false);
         }

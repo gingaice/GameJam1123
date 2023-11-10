@@ -24,7 +24,6 @@ public class Projectile : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("NotBoss");
         if (collision.gameObject != null)
         {
             if (collision.gameObject.GetComponent<EnemyBase>())

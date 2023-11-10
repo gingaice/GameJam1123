@@ -103,8 +103,9 @@ MonoBehaviour:
   baseAttack: 20
   baseSpeed: 5
   drag: 2
+  Value: 2500
   bullet: {fileID: 8280495317738588815, guid: 39fe1d9e79d96224087eaf17f1d39112, type: 3}
-  shotCooldown: 5
+  shotCooldown: 3
   bulletForce: 10
   fireRange: 25
   meleeCooldown: 2
