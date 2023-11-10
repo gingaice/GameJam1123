@@ -16,7 +16,7 @@ public class SpawnerBase : MonoBehaviour
     public List<int> baseSpawnRates;
 
     [SerializeField]
-    public int spawnCooldown;
+    public float spawnCooldown;
     protected float spawnTimer;
 
     protected Vector2 spawnPosition;

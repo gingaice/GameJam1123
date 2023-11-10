@@ -33,6 +33,9 @@ public class PlayerBase : MonoBehaviour, IDamage
     private GameObject bullet;
     [SerializeField]
     public float shotCooldown;
+    [SerializeField]
+    public float boostedFireRate;
+
     private float fireRate;
 
     PlayerController controller;
@@ -219,9 +222,9 @@ public class PlayerBase : MonoBehaviour, IDamage
         return durability;
     }
 
-    public void AdjustFireRate(float rate)
+    public void BoostFireRate()
     {
-        fireRate -= rate;
+        fireRate = boostedFireRate;
     }
 
     public void ResetFireRate()

@@ -26,6 +26,7 @@ public class GameHandler : MonoBehaviour
 
     private currentTime EcurrentTime;
     public SpawnerBase Sb;
+    public SpawnerBase enemySpawner;
 
     private bool isPaused;
     // Start is called before the first frame update
@@ -94,18 +95,23 @@ public class GameHandler : MonoBehaviour
         {
             case currentTime.one:
                 Sb.spawnCooldown = 35;
+                enemySpawner.spawnCooldown = 2;
                 break;
             case currentTime.two:
                 Sb.spawnCooldown = 30;
+                enemySpawner.spawnCooldown = 1.75f;
                 break;
             case currentTime.three:
                 Sb.spawnCooldown = 25;
+                enemySpawner.spawnCooldown = 1.5f;
                 break;
             case currentTime.four:
                 Sb.spawnCooldown = 15;
+                enemySpawner.spawnCooldown = 1.25f;
                 break;
             case currentTime.five:
                 Sb.spawnCooldown = 10;
+                enemySpawner.spawnCooldown = 1;
                 break;
         }
 

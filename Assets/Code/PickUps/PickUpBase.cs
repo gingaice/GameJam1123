@@ -23,6 +23,7 @@ public class PickUpBase : BaseObject, IPickUp
 
         if (collision.gameObject.GetComponent<PlayerController>() == true)
         {
+            GetComponent<AudioSource>().Play();
             CastEffect(collision.gameObject);
             Destroy(gameObject);
         }

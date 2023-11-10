@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public float damageForce;
 
+    [SerializeField]
+    public int boostedMoveSpeed;
+
     List<damageDirections> damagedAreas;
     bool isMoving;
     bool isBroken;
@@ -129,9 +132,9 @@ public class PlayerController : MonoBehaviour
         return isMoving;
     }
 
-    public void AdjustMoveSpeed(int speed)
+    public void BoostMoveSpeed()
     {
-        moveSpeed += speed;
+        moveSpeed = boostedMoveSpeed;
     }
 
     public void ResetMoveSpeed()

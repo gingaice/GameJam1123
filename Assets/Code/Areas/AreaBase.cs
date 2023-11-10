@@ -57,6 +57,7 @@ public class AreaBase : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerBase>())
         {
+            GetComponent<AudioSource>().Play();
             player = collision.gameObject.GetComponent<PlayerBase>();
         }
     }
@@ -65,6 +66,7 @@ public class AreaBase : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerBase>())
         {
+            GetComponent<AudioSource>().Stop();
             player = null;
         }
     }

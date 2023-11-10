@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class IncSpeedPickUp : PickUpBase
 {
-    [SerializeField]
-    public int speedIncrease;
     public override IEnumerator Effect(GameObject target, float time)
     {
         if(target.GetComponent<PlayerController>() != null)
         {
-            target.GetComponent<PlayerController>().AdjustMoveSpeed(speedIncrease);
+            target.GetComponent<PlayerController>().BoostMoveSpeed();
             yield return new WaitForSeconds(time);
             target.GetComponent<PlayerController>().ResetMoveSpeed();
         }

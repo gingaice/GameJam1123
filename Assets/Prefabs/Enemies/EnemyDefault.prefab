@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   baseAttack: 5
-  baseSpeed: 17
+  baseSpeed: 22
   drag: 2
   deathNoise: {fileID: 8300000, guid: d560ad462521c4144a8276f6f71672ba, type: 3}
   Value: 1000

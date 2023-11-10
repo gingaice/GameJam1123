@@ -108,6 +108,7 @@ MonoBehaviour:
   drag: 2
   orientation: {fileID: 7728934441797565857}
   damageForce: 2
+  boostedMoveSpeed: 23
 --- !u!114 &7464866218972372174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,7 @@ MonoBehaviour:
   Gun2: {fileID: 1413685376949286534}
   bullet: {fileID: 8280495317738588815, guid: 1e2e056556427c740ab4a27270d3989a, type: 3}
   shotCooldown: 0.5
+  boostedFireRate: 0.25
   bulletForce: 10
 --- !u!58 &5165114854917715667
 CircleCollider2D:

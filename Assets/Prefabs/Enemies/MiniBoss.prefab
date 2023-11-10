@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38aff0cb8792a504fb6f2778788faecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
   baseAttack: 20
   baseSpeed: 5
   drag: 2
@@ -108,7 +108,7 @@ MonoBehaviour:
   Value: 2500
   bullet: {fileID: 8280495317738588815, guid: 39fe1d9e79d96224087eaf17f1d39112, type: 3}
   shotCooldown: 3
-  bulletForce: 10
+  bulletForce: 20
   fireRange: 25
   meleeCooldown: 2
 --- !u!58 &4940283406552824783
