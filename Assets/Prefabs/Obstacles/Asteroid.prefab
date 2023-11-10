@@ -101,9 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 150
   rotationSpeed: 30
-  damage: 0
   minSize: 0.5
   maxSize: 9
+  damageMulti: 2
 --- !u!58 &6848245837126659584
 CircleCollider2D:
   m_ObjectHideFlags: 0

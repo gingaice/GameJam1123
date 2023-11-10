@@ -1,19 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpBase : BaseObstacle
+public class PickUpBase : BaseObject, IPickUp
 {
-   
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    public float effectDuration;
+
+    public void CastEffect(GameObject target)
     {
-        
+        StartCoroutine(Effect(target, effectDuration));
+    }
+    public virtual IEnumerator Effect(GameObject target, float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Int32 layer = LayerMask.NameToLayer("Border");
+
+        if (collision.gameObject.GetComponent<PlayerController>() == true)
+        {
+            CastEffect(collision.gameObject);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.layer == layer)
+        {
+            Destroy(gameObject);
+        }
     }
 }
