@@ -82,6 +82,7 @@ public class GameHandler : MonoBehaviour
 
     public void _Timing()
     {
+        gameTime = (float)System.Math.Round(gameTime, 2);
         GetComponent<UIManager>().TimerTxt.text = gameTime.ToString();
     }
 

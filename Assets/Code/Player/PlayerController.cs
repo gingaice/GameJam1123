@@ -107,4 +107,14 @@ public class PlayerController : MonoBehaviour
     {
         return isMoving;
     }
+
+    public void AdjustMoveSpeed(int speed)
+    {
+        moveSpeed += speed;  
+    }
+
+    public void ResetMoveSpeed()
+    {
+        moveSpeed = baseSpeed;
+    }
 }

@@ -33,6 +33,7 @@ public class PlayerBase : MonoBehaviour, IDamage
     private GameObject bullet;
     [SerializeField]
     public float shotCooldown;
+    private float fireRate;
 
     PlayerController controller;
     SpriteRenderer spriteRenderer;
@@ -60,6 +61,7 @@ public class PlayerBase : MonoBehaviour, IDamage
         attack = baseAttack;
         durability = 100;
         pressure = 100;
+        fireRate = shotCooldown;
 
         pressureChangeTimer = 0;
         pressureChangeCooldown = 1;
@@ -189,7 +191,7 @@ public class PlayerBase : MonoBehaviour, IDamage
                 gunShot.Play();
             }
 
-            Invoke("ResetShot", shotCooldown);
+            Invoke("ResetShot", fireRate);
 
             canFire = false;
             gunSwitch = !gunSwitch;
@@ -203,5 +205,15 @@ public class PlayerBase : MonoBehaviour, IDamage
     public int GetDurability()
     {
         return durability;
+    }
+
+    public void AdjustFireRate(float rate)
+    {
+        fireRate -= rate;
+    }
+
+    public void ResetFireRate()
+    {
+        fireRate = shotCooldown;
     }
 }

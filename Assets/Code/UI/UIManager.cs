@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -122,6 +123,7 @@ public class UIManager : MonoBehaviour
     public void Death()
     {
         Time.timeScale = 0;
+        pauseMainMenu.gameObject.SetActive(true);
         timerTextXtra.gameObject.SetActive(true);
         TimerTxt.gameObject.SetActive(true);
     }

@@ -649,7 +649,9 @@ MonoBehaviour:
   camera: {fileID: 1604848771}
   spawnable:
   - {fileID: 5629405554931690055, guid: 45862f1376a94734799ccfb2bc740896, type: 3}
-  baseSpawnRates: 64000000
+  - {fileID: 5629405554931690055, guid: f8fb235ff7105ba4fae2aabbd86958de, type: 3}
+  - {fileID: 5629405554931690055, guid: 12881b9d95dbd704097528df7397fc93, type: 3}
+  baseSpawnRates: 46000000140000000a000000
   spawnCooldown: 30
 --- !u!1001 &1110102134
 PrefabInstance:
