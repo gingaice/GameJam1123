@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +27,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     public Button pauseMainMenu;
 
+    [SerializeField]
+    public TMP_Text scoreTxt;
+    private int score;    
+    
+    [SerializeField]
+    public TMP_Text TimerTxt;
+    [SerializeField]
+    private TMP_Text timerTextXtra;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +46,15 @@ public class UIManager : MonoBehaviour
 
         pauseResume.gameObject.SetActive(false);
         pauseMainMenu.gameObject.SetActive(false);
+        TimerTxt.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdatePressureOrb();
+
+        scoreTxt.text = score.ToString();
 
         if (Input.GetKeyUp(KeyCode.Escape))
         {
@@ -79,5 +92,22 @@ public class UIManager : MonoBehaviour
         }
 
         pressureOrbFill.fillAmount = pressure / 100;
+
+        if(pressure <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void Death()
+    {
+        Time.timeScale = 0;
+        timerTextXtra.gameObject.SetActive(true);
+        TimerTxt.gameObject.SetActive(true);
+    }
+
+    public void SetScore(int s)
+    {
+        score = s;
     }
 }

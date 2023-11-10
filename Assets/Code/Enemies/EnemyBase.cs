@@ -26,6 +26,9 @@ public class EnemyBase : MonoBehaviour, IDamage
     private EnemySpawner enemySpawner;
 
     private bool isSpawned;
+
+    private GameHandler gameHandler;
+    private int Value = 100;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -39,6 +42,8 @@ public class EnemyBase : MonoBehaviour, IDamage
         health = maxHealth;
         attack = baseAttack;
         moveSpeed = baseSpeed;
+
+        gameHandler = GameObject.Find("UIManager").GetComponent<GameHandler>();
     }
     public void Init(Vector2 spawnPosition, SpawnerBase spawner)
     {
@@ -52,6 +57,9 @@ public class EnemyBase : MonoBehaviour, IDamage
     {
        if(health <= 0)
        {
+            //GetComponent<UIManager>().SetScore(value);
+
+            gameHandler.score = gameHandler.score + Value;
             Destroy(gameObject);
        }
     }
