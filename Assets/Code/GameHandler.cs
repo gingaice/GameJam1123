@@ -14,6 +14,8 @@ public enum currentTime
 
 public class GameHandler : MonoBehaviour
 {
+    public static GameHandler instance;
+
     [SerializeField]
     public float gameTime;
 
@@ -25,8 +27,13 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Sb = GameObject.Find("ObstacleSpawner").GetComponent<SpawnerBase>();
-        gameTime = 0;
+        if(instance == null)
+        {
+            Sb = GameObject.Find("ObstacleSpawner").GetComponent<SpawnerBase>();
+            gameTime = 0;
+
+            instance = this;
+        }
     }
 
     // Update is called once per frame
@@ -43,6 +50,10 @@ public class GameHandler : MonoBehaviour
         GetComponent<UIManager>().SetScore(score);
     }
     
+    public int GetScore()
+    {
+        return score;
+    }
     public void _Timing()
     {
         GetComponent<UIManager>().TimerTxt.text = gameTime.ToString();
