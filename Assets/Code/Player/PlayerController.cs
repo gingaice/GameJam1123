@@ -40,16 +40,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(horizontalInput == 0f && verticalInput == 0f)
+        if(GameHandler.instance.GetIsPaused() == false)
         {
-            isMoving = false;
-        }
-        else
-        {
-            isMoving = true;
-        }
+            if (horizontalInput == 0f && verticalInput == 0f)
+            {
+                isMoving = false;
+            }
+            else
+            {
+                isMoving = true;
+            }
 
-        Inputs();
+            Inputs();
+        }
     }
 
     void FixedUpdate()

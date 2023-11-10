@@ -74,8 +74,13 @@ public class UIManager : MonoBehaviour
 
         if (Time.timeScale == 1.0f)
         {
+            GameHandler.instance.TogglePause(false);
             pauseResume.gameObject.SetActive(false);
             pauseMainMenu.gameObject.SetActive(false);
+        }
+        else
+        {
+            GameHandler.instance.TogglePause(true);
         }
     }
 

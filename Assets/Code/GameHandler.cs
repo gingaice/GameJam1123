@@ -26,6 +26,8 @@ public class GameHandler : MonoBehaviour
 
     private currentTime EcurrentTime;
     private SpawnerBase Sb;
+
+    private bool isPaused;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class GameHandler : MonoBehaviour
             Sb = GameObject.Find("ObstacleSpawner").GetComponent<SpawnerBase>();
             gameTime = 0;
             kills = 0;
+            isPaused = false;
 
             instance = this;
         }
@@ -46,6 +49,15 @@ public class GameHandler : MonoBehaviour
         Scoring();
         _Timing();
         changeSpawnTime();
+    }
+
+    public void TogglePause(bool paused)
+    {
+        isPaused = paused;
+    }
+    public bool GetIsPaused()
+    {
+        return isPaused;
     }
 
     public void Scoring()
