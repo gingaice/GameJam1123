@@ -27,7 +27,7 @@ public class SpawnerBase : MonoBehaviour
 
     protected Bounds worldBounds;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         transform.position = Vector2.zero;
         spawnPosition = Vector2.zero;
@@ -40,7 +40,7 @@ public class SpawnerBase : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         spawnTimer += Time.deltaTime;
 
@@ -57,7 +57,7 @@ public class SpawnerBase : MonoBehaviour
     }
     protected virtual GameObject GetSpawnObject()
     {
-        GeneratePos();
+        spawnPosition = GeneratePos();
 
         if (spawnPosition != Vector2.zero)
         {
@@ -71,7 +71,7 @@ public class SpawnerBase : MonoBehaviour
 
         return null;
     }
-    protected virtual void GeneratePos()
+    protected virtual Vector2 GeneratePos()
     {
         Bounds negativeBounds = new Bounds(camera.transform.position, new Vector2(cameraWidth, cameraHeight));
 
@@ -85,10 +85,10 @@ public class SpawnerBase : MonoBehaviour
 
         if (negativeBounds.Contains(spawnCheck))
         {
-            return;
+            return Vector2.zero;
         }
 
-        spawnPosition = spawnCheck;
+        return spawnCheck;
     }
     protected virtual void GenerateToSpawn()
     {

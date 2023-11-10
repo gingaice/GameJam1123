@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyBase : MonoBehaviour, IDamage
 {
@@ -43,7 +44,7 @@ public class EnemyBase : MonoBehaviour, IDamage
         attack = baseAttack;
         moveSpeed = baseSpeed;
 
-        gameHandler = GameObject.Find("UIManager").GetComponent<GameHandler>();
+        gameHandler = GameHandler.instance;
     }
     public void Init(Vector2 spawnPosition, SpawnerBase spawner)
     {
@@ -57,10 +58,7 @@ public class EnemyBase : MonoBehaviour, IDamage
     {
        if(health <= 0)
        {
-            //GetComponent<UIManager>().SetScore(value);
-
-            gameHandler.score = gameHandler.score + Value;
-            Destroy(gameObject);
+            OnDeath(true);
        }
     }
 
@@ -81,17 +79,28 @@ public class EnemyBase : MonoBehaviour, IDamage
         Vector2 destination = target.transform.position;
         Vector2 moveDirection = destination - new Vector2(transform.position.x, transform.position.y);
 
-        float angle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90f;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
         rb.AddForce((moveDirection.normalized *  moveSpeed), ForceMode2D.Force);
-        rb.rotation = angle;
     }
 
+    protected void OnDeath(bool killed)
+    {
+        if(killed == true)
+        {
+            gameHandler.score = gameHandler.score + Value;
+            gameHandler.AddKill();
+        }
+
+        Destroy(gameObject);
+    }
     protected void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.GetComponent<PlayerController>() == true)
         {
             collision.gameObject.GetComponent<PlayerBase>().TakeDamage(attack);
-            Destroy(gameObject);
+            OnDeath(false);
         }
     }
 }

@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDelay: 2
-  minLifeSpan: 5
-  maxLifeSpan: 10
+  minLifeSpan: 10
+  maxLifeSpan: 30
 --- !u!58 &6417276351360531001
 CircleCollider2D:
   m_ObjectHideFlags: 0

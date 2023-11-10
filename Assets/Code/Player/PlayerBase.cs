@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerBase : MonoBehaviour, IDamage
 {
+    Camera camera;
+
     [SerializeField]
     public int ammo;
 
@@ -20,6 +23,11 @@ public class PlayerBase : MonoBehaviour, IDamage
     public Sprite stationarySprite;
     [SerializeField]
     public Sprite movingSprite;
+
+    [SerializeField]
+    public GameObject Gun1;
+    [SerializeField] 
+    public GameObject Gun2;
 
     [SerializeField]
     private GameObject bullet;
@@ -42,10 +50,13 @@ public class PlayerBase : MonoBehaviour, IDamage
     public float bulletForce;
 
     bool canFire;
+    bool gunSwitch;
 
     // Start is called before the first frame update
     void Start()
     {
+        camera = Camera.main;
+
         attack = baseAttack;
         durability = 100;
         pressure = 100;
@@ -58,6 +69,7 @@ public class PlayerBase : MonoBehaviour, IDamage
         gunShot = GetComponent<AudioSource>();
 
         canFire = true;
+        gunSwitch = false;
     }
 
     // Update is called once per frame
@@ -140,11 +152,26 @@ public class PlayerBase : MonoBehaviour, IDamage
     {
         if(canFire == true)
         {
-            Vector2 dir = transform.up;
+            Vector2 dir;
+            GameObject projectile;
 
-            GameObject projectile = Instantiate(bullet, transform.position, Quaternion.identity);
+            if (gunSwitch == true)
+            {
+                projectile = Instantiate(bullet, Gun1.transform.position, Quaternion.identity);
+                dir = camera.ScreenToWorldPoint(Input.mousePosition) - Gun1.transform.position;
+            }
+            else
+            {
+                projectile = Instantiate(bullet, Gun2.transform.position, Quaternion.identity);
+                dir = camera.ScreenToWorldPoint(Input.mousePosition) - Gun2.transform.position;
+            }
+   
 
             projectile.GetComponent<Projectile>().Init(attack);
+
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+
+            projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             projectile.GetComponent<Rigidbody2D>().AddForce(dir.normalized * bulletForce, ForceMode2D.Impulse);
 
             if (gunShot != null)
@@ -153,7 +180,9 @@ public class PlayerBase : MonoBehaviour, IDamage
             }
 
             Invoke("ResetShot", shotCooldown);
+
             canFire = false;
+            gunSwitch = !gunSwitch;
         }
     }
     private void ResetShot()
