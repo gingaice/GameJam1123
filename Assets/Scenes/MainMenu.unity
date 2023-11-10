@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 212}
-  m_SizeDelta: {x: 660.681, y: 426.13}
+  m_AnchoredPosition: {x: -4, y: 112}
+  m_SizeDelta: {x: 900, y: 426.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &28406743
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Game (change this)
+  m_text: DEPRESSURISED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1f307a6cf8401742bd975a380a80140, type: 2}
   m_sharedMaterial: {fileID: -1547748501515114817, guid: b1f307a6cf8401742bd975a380a80140, type: 2}
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -129.17868, y: 0, z: -256.96848, w: 302.80612}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -862,7 +862,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b6d512b941dfcf4aaa5bff0376bf6c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e05d20428d9f15440bdf79ed0abecff5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
