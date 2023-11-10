@@ -94,6 +94,8 @@ public class PlayerBase : MonoBehaviour, IDamage
         }
         else
         {
+            controller.ClearDamage();
+
             if (pressure != 100)
             {
                 IncreasePressure();

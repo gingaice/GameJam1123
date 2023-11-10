@@ -172,6 +172,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ClearDamage()
+    {
+        if(damagedAreas.Count > 0)
+        {
+            damagedAreas.Clear();
+        }
+    }
+
     public void SetIsBroken(bool check)
     {
         isBroken = check;
