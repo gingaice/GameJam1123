@@ -14,19 +14,29 @@ public enum currentTime
 
 public class GameHandler : MonoBehaviour
 {
+    public static GameHandler instance;
+
     [SerializeField]
     public float gameTime;
 
     [SerializeField]
     public int score;
 
+    private int kills;
+
     private currentTime EcurrentTime;
     private SpawnerBase Sb;
     // Start is called before the first frame update
     void Start()
     {
-        Sb = GameObject.Find("ObstacleSpawner").GetComponent<SpawnerBase>();
-        gameTime = 0;
+        if(instance == null)
+        {
+            Sb = GameObject.Find("ObstacleSpawner").GetComponent<SpawnerBase>();
+            gameTime = 0;
+            kills = 0;
+
+            instance = this;
+        }
     }
 
     // Update is called once per frame
@@ -43,6 +53,21 @@ public class GameHandler : MonoBehaviour
         GetComponent<UIManager>().SetScore(score);
     }
     
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public void AddKill()
+    {
+        kills += 1;
+    }
+
+    public int GetKills()
+    {
+        return kills;
+    }
+
     public void _Timing()
     {
         GetComponent<UIManager>().TimerTxt.text = gameTime.ToString();
@@ -53,35 +78,39 @@ public class GameHandler : MonoBehaviour
         switch (EcurrentTime)
         {
             case currentTime.one:
-                Sb.spawnCooldown = 5;
+                Sb.spawnCooldown = 60;
                 break;
             case currentTime.two:
-                Sb.spawnCooldown = 4;
+                Sb.spawnCooldown = 50;
                 break;
             case currentTime.three:
-                Sb.spawnCooldown = 3;
+                Sb.spawnCooldown = 40;
                 break;
             case currentTime.four:
-                Sb.spawnCooldown = 2;
+                Sb.spawnCooldown = 30;
                 break;
             case currentTime.five:
-                Sb.spawnCooldown = 1;
+                Sb.spawnCooldown = 20;
                 break;
         }
 
-        if (gameTime > 6.0f) // i dont know why the fuck this aint running will fix tmr
+        if (gameTime < 30.0f) // i dont know why the fuck this aint running will fix tmr
+        {
+            EcurrentTime = currentTime.one;
+        }
+        else if (gameTime < 60.0f)
         {
             EcurrentTime = currentTime.two;
         }
-        else if (gameTime > 12.0f)
+        else if (gameTime < 90f)
         {
             EcurrentTime = currentTime.three;
         }
-        else if (gameTime > 18f)
+        else if (gameTime < 120f)
         {
             EcurrentTime = currentTime.four;
         }
-        else if (gameTime > 24f)
+        else
         {
             EcurrentTime = currentTime.five;
         }

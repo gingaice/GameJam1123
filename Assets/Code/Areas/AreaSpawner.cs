@@ -10,7 +10,7 @@ public class AreaSpawner : SpawnerBase
     public float radiusMin;
     [SerializeField] 
     public float radiusMax;
-    protected override void GeneratePos()
+    protected override Vector2 GeneratePos()
     {
         float spawnX;
         float spawnY;
@@ -28,11 +28,10 @@ public class AreaSpawner : SpawnerBase
 
         if (hits.Length != 0)
         {
-            spawnPosition = Vector2.zero;
-            return;
+            return Vector2.zero;
         }
 
-        spawnPosition = spawnCheck;
+        return spawnCheck;
     }
 
     protected override void SpawnObject(GameObject spawn)

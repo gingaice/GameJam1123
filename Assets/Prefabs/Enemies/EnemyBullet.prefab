@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8509820245067504153}
   - component: {fileID: 5343241399039500859}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: -3497528973629887415}
   - component: {fileID: -1385655671870853504}
   - component: {fileID: 4125447947762789622}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1544
+    m_Bits: 3592
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -189,7 +189,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1544
+    m_Bits: 3592
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

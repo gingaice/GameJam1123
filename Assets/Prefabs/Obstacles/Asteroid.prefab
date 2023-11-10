@@ -103,7 +103,7 @@ MonoBehaviour:
   rotationSpeed: 30
   damage: 0
   minSize: 0.5
-  maxSize: 2
+  maxSize: 9
 --- !u!58 &6848245837126659584
 CircleCollider2D:
   m_ObjectHideFlags: 0
