@@ -24,7 +24,6 @@ public class AreaSpawner : SpawnerBase
         mask += LayerMask.GetMask("Border");
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(spawnCheck, 7.5f, mask);
-        Debug.Log(hits.Length);
 
         if (hits.Length != 0)
         {
