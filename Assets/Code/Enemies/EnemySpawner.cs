@@ -13,7 +13,7 @@ public class EnemySpawner : SpawnerBase
     private Vector2 miniBossSpawnPos;
     private int miniBossSpawnCheckpoint;
 
-    protected void Start()
+    protected new void Start()
     {
         base.Start();
 
