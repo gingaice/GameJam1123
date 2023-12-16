@@ -47,7 +47,7 @@ public class GameHandler : MonoBehaviour
         gameTime += Time.deltaTime;
         Scoring();
         _Timing();
-        changeSpawnTime();
+        //changeSpawnTime();
     }
 
     public void TogglePause(bool paused)

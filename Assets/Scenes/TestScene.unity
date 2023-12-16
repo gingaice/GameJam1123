@@ -552,7 +552,7 @@ MonoBehaviour:
   spawnable:
   - {fileID: 799456818487530892, guid: c4c42c1d9f28c4f478085d60a3d25e97, type: 3}
   baseSpawnRates: 64000000
-  spawnCooldown: 2
+  spawnCooldown: 15
   miniBoss: {fileID: 3809556972650883390, guid: cc048885c3dbd4146bd9419279c0c9a8, type: 3}
   miniBossCheckpointIncrement: 15
 --- !u!4 &610139275

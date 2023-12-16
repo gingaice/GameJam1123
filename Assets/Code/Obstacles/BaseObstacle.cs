@@ -23,6 +23,17 @@ public class BaseObstacle : BaseObject
 
         if (collision.gameObject.GetComponent<PlayerController>() == true)
         {
+            Vector2 point = collision.GetContact(0).point;
+
+            if (point.x < collision.transform.position.x)
+            {
+                collision.gameObject.GetComponent<PlayerController>().AddDamagedArea(damageDirections.LEFT);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<PlayerController>().AddDamagedArea(damageDirections.RIGHT);
+            }
+
             collision.gameObject.GetComponent<PlayerBase>().TakeDamage(damage);
             Destroy(gameObject);
         }

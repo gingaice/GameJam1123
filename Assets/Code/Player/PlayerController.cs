@@ -164,11 +164,11 @@ public class PlayerController : MonoBehaviour
                 switch (damagedAreas[i])
                 {
                     case (damageDirections.LEFT):
-                        rb.AddForce((Vector2.right * damageForce), ForceMode2D.Force);
+                        rb.AddForce((transform.right * damageForce), ForceMode2D.Force);
                         break;
 
                     case (damageDirections.RIGHT):
-                        rb.AddForce((Vector2.left * damageForce), ForceMode2D.Force);
+                        rb.AddForce((-transform.right * damageForce), ForceMode2D.Force);
                         break;
                 }
             }

@@ -39,11 +39,6 @@ public class BaseObject : MonoBehaviour
         isSpawned = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate()
     {
         if (isSpawned == true)
